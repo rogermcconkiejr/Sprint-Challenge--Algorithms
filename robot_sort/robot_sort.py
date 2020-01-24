@@ -96,8 +96,40 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Algorithm:
+        # I'm going to attempt to use the bubble sort method to help my robot sort.
+        # To do this, I'm going to move the robot down the list to the right.  It will pick up a value,
+        # and compare it to the value on its right.  If its value in hand is greater, it will swap items and
+        # move left one place to replace the value it just took with the smaller value.  It will repeat this process until
+        # the highest values bubble up to where they should be.
+        #
+        # After the highest value has bubbled up to the top, I need to restart the loop.  I will do this by bringing
+        # the robot back to the start of the list on the left and then repeating the process.  
+        # 
+        # I will use the light to help the robot determine whether it should be sorting or starting the loop agian.  
+
+        while self.can_move_right():
+            self.set_light_on # This being true allows sorting to be done.
+            self.swap_item() # pick up initial item.
+            self.move_right # move robot towards the right
+            while self.light_is_on: # Only perform loop when sorting needs to be done.
+                if self.compare_item == 1: # compare value in hand with each value
+                    self.swap_item() #if greater, meaning right-hand neighbor is smaller, swap item.
+                    self.move_left() 
+                    self.swap_item() #swap lower value with value on left hand side
+                    self.move_right
+                else: #if value in hand is less than compared value
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+            self.set_light_off() # Turn light off to stop sorting once robot reaches end of list.
+            while self.can_move_left(): # once the robot finishes the loop, it needs to go back to the beginning of the list.
+                self.move_left()
+            
+
+
+        
+                
 
 
 if __name__ == "__main__":
