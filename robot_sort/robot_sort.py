@@ -96,8 +96,22 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # I'm going to attempt to use the bubble sort method to help my robot sort.
+        # while self.light_is_on == False:
+            
+        # Start moving the sort robot to the right of the list
+        while self.can_move_right():
+            self.swap_item() #pick up item
+            self.move_right()
+            # Check each item.  If item in hand is greater than item compared, swap, than move the
+            # lower item a space below the greater item.  Repeat until large value goes as high as 
+            # it can.  This will acheive the 'bubble.'
+            if self.compare_item == 1:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                
 
 
 if __name__ == "__main__":
